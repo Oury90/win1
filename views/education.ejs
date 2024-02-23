@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+    <main>
+        <div class="education">
+            <div class="container">
+                <h1>Weather App</h1>
+                <form action="/weather" method="post">
+                    <input type="text" id="locationInput" name="country" placeholder="Enter a city">
+                    <button id="searchButton" type="submit">Search</button>
+                </form>
+                <div class="weather-info">
+                    <h2 id="location"><%= count %></h2>
+                    <p id="temperature"><%= tem %></p>
+                    <p id="description"><%= hum %></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<%- include('partials/footer'); -%>
