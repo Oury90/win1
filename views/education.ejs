@@ -9,9 +9,10 @@
                     <button id="searchButton" type="submit">Search</button>
                 </form>
                 <div class="weather-info">
-                    <h2 id="location"><%= count %></h2>
-                    <p id="temperature"><%= tem %></p>
-                    <p id="description"><%= hum %></p>
+                    <h2 id="location"><%= temperature %></h2>
+                    <p id="temperature"><%= countryCode %></p>
+                    <p id="description"><%= locals.hum %></p>
+                    <img src="<%= urlIcon %>" alt="">
                 </div>
             </div>
         </div>

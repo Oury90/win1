@@ -10,8 +10,6 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 const apiKey = "dc08db6cfe7a3b9491b339dcef23aedd";
-let countryName = "FR";
-
 
 // profile page
 app.get("/", (req, res) =>{
@@ -31,31 +29,35 @@ app.get("/project", (req, res) =>{
     res.render("project.ejs")
 })
 
-// poster the contry choice
-
-app.post("/weather", (req, res) =>{
-    let nameCountry = req.body.country
-    countryName += nameCountry
-    res.redirect("/education")
-})
 
 // education
-app.get("/education", (req, res) =>{
-    async function getData (){
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${countryName}&appid=${apiKey}`);
-        let temperature = response.data.main.temp;
-        let humidity = response.data.main.humidity;
-        let country = response.data.sys.country;
-        res.render("education.ejs", {
-            tem: temperature,
-            hum: humidity,
-            count: country
-        })
-    }
-    getData();
-
+app.get("/education", async(req, res) =>{
+    let countryName = "Winnipeg";
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${apiKey}&units=metric`);
+    const weather = response.data;
+    const icon = weather.weather[0].icon
+    const url = `https://openweathermap.org/img/wn/${icon}@2x.png`
+    res.render("education.ejs",{
+        temperature: Math.round(weather.main.temp),
+        countryCode: weather.name,
+        urlIcon: url
+    })
+ 
 })
 
+// Post for get a new weather of the city
+app.post("/weather", async(req, res) =>{
+    const cityName = req.body.country;
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`);
+    const weather = response.data;
+    const icon = weather.weather[0].icon
+    const url = `https://openweathermap.org/img/wn/${icon}@2x.png`
+    res.render("education.ejs",{
+        temperature: Math.round(weather.main.temp),
+        countryCode: weather.name,
+        urlIcon: url
+    })
+})
 // contact
 app.get("/contact", (req, res) =>{
     res.render("contact.ejs")

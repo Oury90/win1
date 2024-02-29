@@ -28,7 +28,7 @@ body{
     text-decoration: none;
     padding: 12px ;
     font-size: 1.2rem;
-    color: #666;
+    color: #f1f1f1;
     letter-spacing: 1px;
 }
 .nav a:hover{
@@ -62,12 +62,24 @@ footer{
     text-decoration: none;
     font-size: 1.5rem;
     color: #222;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.icon a:hover{
+    background-color: black;
+    color: #f1f1f1;
+    transition: 300ms all ease-in-out;
 }
 .footer-nav a{
     display: inline-block;
     text-decoration: none;
     margin: 0 12px;
+    color: #f1f1f1;
+    border-radius: 1px solid black;
+}
+.footer-nav a:hover{
     color: #222;
+    transition: 300ms all ease-in-out;
 }
 footer p{
     margin-top: 2rem;
@@ -160,26 +172,26 @@ input[type=text], select, textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
-  }
+}
   
-  input[type=submit] {
+input[type=submit] {
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
   
-  input[type=submit]:hover {
+input[type=submit]:hover {
     background-color: #45a049;
-  }
+}
   
-  .container {
+.container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-  }
+}
 
 
 /* edication section */
